@@ -2,8 +2,8 @@
 class Vec2
 {
 public:
-	float x;
-	float y;
+	float x = 0.0f;
+	float y = 0.0f;
 	Vec2();
 	Vec2(float xin, float yin);
 
@@ -22,9 +22,8 @@ public:
 
 	float dist(const Vec2& rhs)const;
 
-
-
-
-
-
+	// length of this vector
+	float length()const;
+	// unit vector in the same direction; returns (0,0) for a zero-length vector
+	Vec2 normalized()const;
 };

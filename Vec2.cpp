@@ -19,7 +19,7 @@ bool Vec2::operator==(const Vec2& rhs) const
 
 bool Vec2::operator!=(const Vec2& rhs) const
 {
-	return (x != rhs.x && y != rhs.y);
+	return (x != rhs.x || y != rhs.y);
 }
 
 Vec2 Vec2::operator+(const Vec2& rhs) const
@@ -44,21 +44,44 @@ Vec2 Vec2::operator/(const float val) const
 
 void Vec2::operator+=(const Vec2& rhs)
 {
+	x += rhs.x;
+	y += rhs.y;
 }
 
 void Vec2::operator-=(const Vec2& rhs)
 {
+	x -= rhs.x;
+	y -= rhs.y;
 }
 
 void Vec2::operator*=(const float val)
 {
+	x *= val;
+	y *= val;
 }
 
 void Vec2::operator/=(const float val)
 {
+	x /= val;
+	y /= val;
 }
 
 float Vec2::dist(const Vec2& rhs) const
 {
-	return 0.0f;
+	return std::sqrt((x - rhs.x) * (x - rhs.x) + (y - rhs.y) * (y - rhs.y));
+}
+
+float Vec2::length() const
+{
+	return std::sqrt(x * x + y * y);
+}
+
+Vec2 Vec2::normalized() const
+{
+	float len = length();
+	if (len == 0.0f)
+	{
+		return Vec2(0.0f, 0.0f);
+	}
+	return Vec2(x / len, y / len);
 }
