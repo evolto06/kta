@@ -47,7 +47,24 @@ To handle the high entity counts typical of the genre, this project utilizes an 
 
 ---
 
+## 🕹️ Controls
+| Key | Action |
+| --- | --- |
+| `W` `A` `S` `D` | Move |
+| `P` | Pause / resume |
+| `R` | Restart after game over |
+| `Esc` | Quit |
+
+Magic fires automatically at the nearest enemy. Each enemy that reaches you costs 1 HP; at 0 HP the game is over. Enemies spawn faster as your score grows.
+
+---
+
 ## 📁 Project Structure
-* `kta.cpp`: Main entry point and system orchestrator.
+* `kta.cpp`: Main entry point; creates and runs `Game`.
+* `Game.h/.cpp`: Game loop and systems (`sUserInput`, `sEnemySpawner`, `sSeeker`, `sAutoFire`, `sMovement`, `sLifespan`, `sCollision`, `render`).
+* `EntityManager.h/.cpp`: Creates entities, groups them by tag, and removes destroyed ones once per frame.
+* `Entity.h/.cpp`: An entity: id, tag, alive flag, and its component pointers.
+* `Components.h/.cpp`: Pure data components (`CTransform`, `CName`, `CShape`, `CBBox`, `CInput`, `CLifespan`, `CHealth`, `CScore`).
+* `Vec2.h/.cpp`: 2D vector math.
 * `.gitignore`: Optimized for Visual Studio (ignores `.vs/`, `Build/`, and binary artifacts).
-* `kta.slnx`: Visual Studio solution file.
+* `kta.slnx`: Visual Studio solution file. All configurations build into `Build/<Platform>/<Configuration>/bin`.
