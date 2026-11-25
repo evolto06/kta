@@ -45,6 +45,19 @@ To handle the high entity counts typical of the genre, this project utilizes an 
    * **Note:** I have SFML installed in a library path in my main :C folder, and configured to be included in the project in Visual Studio.
 5.  Build and run using **F5** (Debug) or **Ctrl+F5** (Release).
 
+### Command line (Makefile)
+The `Makefile` wraps MSBuild, so it needs Visual Studio and GNU Make (`make` / `mingw32-make`), not a separate compiler:
+
+```sh
+make              # Debug x64
+make release      # Release x64
+make run          # build and run Debug (SFML's bin folder must be on PATH)
+make run-release
+make clean
+```
+
+If MSBuild lives elsewhere: `make MSBUILD="C:/path/to/MSBuild.exe"`.
+
 ---
 
 ## 🕹️ Controls
